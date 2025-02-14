@@ -11,8 +11,8 @@ public class Event {
 
     // Instance Variables Declaration
 
-    private String eventTitle;
-    private Date eventDate;
+    protected String eventTitle;
+    protected Date eventDate;
     private int totalSeats;
     private int reservedSeats;
 
@@ -21,11 +21,21 @@ public class Event {
 
     // Event Methods
 
-    public Event (String eventTitle, Date eventDate, int totalSeats) {
+    public Event (String eventTitle, String eventDateString, int totalSeats) {
+
+
+        // String to Date Parsing
+
+        try {
+            this.eventDate = new SimpleDateFormat("dd/MM/yyyy").parse(eventDateString);
+        } catch (java.text.ParseException e) {
+            throw new IllegalArgumentException("Enter a valid date");
+        }
+
+        //
 
         if (totalSeats > 0 && eventDate.after(new Date())) {
             this.eventTitle = eventTitle;
-            this.eventDate = eventDate;
             this.totalSeats = totalSeats;
             this.reservedSeats = 0;
         } else if (eventDate.before(new Date())) {
@@ -98,7 +108,7 @@ public class Event {
     }
 
     @Override public String toString() {
-        return(eventTitle + " - " + new SimpleDateFormat("dd/MM/yyyy").format(this.eventDate));
+        return(this.eventTitle + " - " + new SimpleDateFormat("dd/MM/yyyy").format(this.eventDate));
     }
 
     //
