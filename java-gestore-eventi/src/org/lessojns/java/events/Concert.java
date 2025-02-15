@@ -30,25 +30,31 @@ public class Concert extends Event {
 
     }
 
-    public String getTime() {
-        return("The event's time is: " + eventTime);
-    }
 
-    public void setTime(String eventTime) {
-        this.eventTime = LocalTime.parse(eventTime);
-    }
+        // Getters and Setters
 
-    public String getPrice() {
-        return("The event's price is: " + eventPrice);
-    }
+        public String getTime() {
+            return("The event's time is: " + eventTime);
+        }
 
-    public void setPrice(float eventPrice) {
-        this.eventPrice = new BigDecimal(eventPrice).setScale(2, RoundingMode.HALF_EVEN);
-    }
+        public void setTime(String eventTime) {
+            this.eventTime = LocalTime.parse(eventTime);
+        }
 
-    @Override public String toString() {
-        return(this.eventTitle + " - " + new SimpleDateFormat("dd/MM/yyyy").format(this.eventDate) + " | " + this.eventPrice + "$");
-    }
+        public String getPrice() {
+            return("The event's price is: " + eventPrice);
+        }
+
+        public void setPrice(float eventPrice) {
+            this.eventPrice = new BigDecimal(eventPrice).setScale(2, RoundingMode.HALF_EVEN);
+        }
+
+        @Override public String toString() {
+            return(this.eventTitle + " - " + new SimpleDateFormat("dd/MM/yyyy").format(this.eventDate) + " | " + this.eventPrice + "$");
+        }
+
+        //
+
     
     //
 
